@@ -1,4 +1,4 @@
-[`Kotlin-Avanzado`](../Readme.md) > `Sesión 4
+[`Kotlin-Avanzado`](../Readme.md) > `Sesión 5`
 
 ## Sesión 5: Operaciones con Intents y Threads
 

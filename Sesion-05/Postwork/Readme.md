@@ -27,7 +27,7 @@ Asímismo, escuchamos eventos que puedan ser de nuestro interes en nuestra aplic
 1. Debe de hacerse al menos una implementación de un evento de sistema a un receiver.
 2. Se debe al menos ejercer alguna acción respectiva a content providers (obtener una lista de usuarios, facilitar información que sea consumida por otra app de prueba).
 
-[`Anterior`](../Proyecto) | [`Siguiente`](../Sesión-06)      
+[`Anterior`](../Proyecto) | [`Siguiente`](../../Sesión-06)      
 
 </div>
 

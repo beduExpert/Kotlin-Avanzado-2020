@@ -1,6 +1,6 @@
 [`Kotlin-Avanzado`](../Readme.md) > `Sesión 4
 
-## Sesión 4: Operaciones con Intents y Threads
+## Sesión 5: Operaciones con Intents y Threads
 
 <img src="images/thread.png" align="right" height="120" hspace="10">
 
@@ -50,17 +50,17 @@ Un content provider proporciona una implementación de una interfaz que actúa c
 
 Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
 
-- [**`PROYECTO SESIÓN 3`**](Proyecto/Readme.md)
+- [**`PROYECTO SESIÓN 5`**](Proyecto/Readme.md)
 
 ### 4. Postwork :memo:
 
 Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
 
-- [**`POSTWORK SESIÓN 3`**](Postwork/Readme.md)
+- [**`POSTWORK SESIÓN 5`**](Postwork/Readme.md)
 
 <br/>
 
-[`Anterior`](../Sesion-03/Readme.md) | [`Siguiente`](../Sesion-05/Readme.md)      
+[`Anterior`](../Sesion-04/Readme.md) | [`Siguiente`](../Sesion-06/Readme.md)      
 
 </div>
 

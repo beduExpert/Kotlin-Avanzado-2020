@@ -1,16 +1,66 @@
+[`Kotlin-Avanzado`](../Readme.md) > `Sesión 4
 
-# Sesión 1: Nombre de la sesión
+## Sesión 4: Operaciones con Intents y Threads
 
-## Objetivos
+<img src="images/thread.png" align="right" height="120" hspace="10">
 
-
-
-
-## Tabla de Contenidos
+<div style="text-align: justify;">
 
 
-## Desarrollo
+
+### 1. Objetivos :dart: 
+
+- Extender el uso de la clase Intent.
+
+- Recivir alertas y avisos desde otras clases, aplicaciones o avisos del sistema.
+
+- Implementar una forma para proveer y obtener contenido de otra aplicación o de la misma.
+
+- Crear distintos hilos que no bloqueen el Thread principal.
+
+  
+
+### 2. Contenido :blue_book:
 
  
 
+#### <ins>Broadcast Receivers</ins>
+
+Mediante esta clase, registraremos receptores capaces de escuchar emisiones de esta, de otras aplicaciones y del sistema, dando la posibilidad de reaccionar a este.
+
+- [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
+- [**`RETO 1`**](Reto-01/Readme.md)
+
+---
+
+
+
+<ins>Content Providers</ins>
+
+Un content provider proporciona una implementación de una interfaz que actúa como gestor del contenido de una aplicación, permitiendo que otro agente acceda y manipule nuestra información de forma eficiente y segura. En este ejemplo abordaremos los pasos esenciales para lograr su propósito.
+
+- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
+- [**`RETO 2`**](Reto-02/Readme.md)
+
+---
+
+ 
+
+### 3. Proyecto :hammer:
+
+Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
+
+- [**`PROYECTO SESIÓN 3`**](Proyecto/Readme.md)
+
+### 4. Postwork :memo:
+
+Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
+
+- [**`POSTWORK SESIÓN 3`**](Postwork/Readme.md)
+
+<br/>
+
+[`Anterior`](../Sesion-03/Readme.md) | [`Siguiente`](../Sesion-05/Readme.md)      
+
+</div>
 

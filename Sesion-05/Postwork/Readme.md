@@ -1,6 +1,6 @@
 [`Kotlin Avanzado`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Postwork`
 
-## Proyecto
+## Postwork
 
 <div style="text-align: justify;">
 

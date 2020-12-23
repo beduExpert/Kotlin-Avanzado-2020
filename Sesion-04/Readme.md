@@ -25,7 +25,7 @@
 
 #### <ins>Shared Preferences</ins>
 
-Meditante esta clase
+Meditante esta clase, guardaremos información no sensible en nuestra app.
 
 - [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
 - [**`RETO 1`**](Reto-01/Readme.md)

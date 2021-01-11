@@ -44,8 +44,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setValues(){
+        val string = preferences.getString(STRING,"")
+        val boolean = preferences.getBoolean(BOOLEAN, false)
+        val number = preferences.getFloat(NUMBER,0f)
 
-
+        //los atamos a sus vistas
+        etString.setText(string)
+        switch1.isChecked = boolean
+        etNumber.setText(number.toString())
     }
 
 

@@ -1,6 +1,6 @@
 [`Kotlin-Avanzado`](../Readme.md) > `Sesión 5`
 
-## Sesión 5: Operaciones con Intents y Threads
+## Sesión 5: App Components
 
 <img src="images/thread.png" align="right" height="120" hspace="10">
 
@@ -15,8 +15,6 @@
 - Recibir alertas y avisos desde otras clases, aplicaciones o avisos del sistema.
 
 - Implementar una forma para proveer y obtener contenido de otra aplicación o de la misma.
-
-- Crear distintos hilos que no bloqueen el Thread principal.
 
   
 

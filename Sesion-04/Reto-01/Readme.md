@@ -153,7 +153,7 @@ Las pantallas se deben ver así
 
 
 
-[Anterior`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-02)      
+[`Anterior`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-02)      
 
 </div>
 

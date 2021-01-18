@@ -16,7 +16,7 @@ Este módulo tiene como  finalidad aplicar conceptos concurrentes en el desarrol
  - [Sesión 2: Networking](Sesion-02/Readme.md) 
  - [Sesión 3: Acceso a Hardware](Sesion-03/Readme.md) 
  - [Sesión 4: Persistencia y Bases de Datos](Sesion-04/Readme.md) 
- - [Sesión 5: Operaciones con Intents y Threads](Sesion-05/Readme.md) 
+ - [Sesión 5: App Components](Sesion-05/Readme.md) 
  - [Sesión 6: Firebase y Notifications](Sesion-06/Readme.md) 
  - [Sesión 7: Patrones de arquitectura](Sesion-07/Readme.md) 
  - [Sesión 8: Testing](Sesion-08/Readme.md)  

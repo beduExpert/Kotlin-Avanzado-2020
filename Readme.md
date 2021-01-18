@@ -18,8 +18,8 @@ Este módulo tiene como  finalidad aplicar conceptos concurrentes en el desarrol
  - [Sesión 4: Persistencia y Bases de Datos](Sesion-04/Readme.md) 
  - [Sesión 5: Operaciones con Intents y Threads](Sesion-05/Readme.md) 
  - [Sesión 6: Firebase y Notifications](Sesion-06/Readme.md) 
- - [Sesión 7:Testing](Sesion-07/Readme.md) 
- - [Sesión 8: Patrones de arquitectura](Sesion-08/Readme.md)  
+ - [Sesión 7: Patrones de arquitectura](Sesion-07/Readme.md) 
+ - [Sesión 8: Testing](Sesion-08/Readme.md)  
 
 [`Siguiente`](Sesion-01/Readme.md)
 

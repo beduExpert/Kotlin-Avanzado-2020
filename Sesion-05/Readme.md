@@ -12,7 +12,7 @@
 
 - Extender el uso de la clase Intent.
 
-- Recivir alertas y avisos desde otras clases, aplicaciones o avisos del sistema.
+- Recibir alertas y avisos desde otras clases, aplicaciones o avisos del sistema.
 
 - Implementar una forma para proveer y obtener contenido de otra aplicación o de la misma.
 

@@ -5,10 +5,6 @@
 <img src="images/testing.png" align="right" height="120" hspace="10">
 
 <div style="text-align: justify;">
-
-
-
-
 ### 1. Objetivos :dart: 
 
 - Automatizar el testing de una aplicación
@@ -46,11 +42,20 @@ Google divide los tipos de tests en tres categorías diferentes:
 Generaremos pruebas unitarias para una aplicación sencilla.
 
 - [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
-- [**`RETO 1`**](Reto-01/Readme.md)
 
----
+#### <ins>Integrated tests y Tests instrumentados</ins>
 
- 
+Generaremos pruebas unitarias para una aplicación sencilla.
+
+- [**`EJEMPLO 2`**](Ejemplo-01/Readme.md)
+
+***<ins>Tests end-to-end***</ins>
+
+Generaremos pruebas completas de flujos  para una aplicación sencilla.
+
+- [**`EJEMPLO 3`**](Ejemplo-01/Readme.md)
+
+
 
 ### 3. Proyecto :hammer:
 

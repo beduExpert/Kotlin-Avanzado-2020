@@ -31,15 +31,25 @@ Para los content providers, hay que entender los siguientes conceptos:
 
 * Content URI: Es una URI que apunta a una tabla o dato específico de un proveedor de contenido de una aplicación específica. Su estructura es la siguiente:
 
-  ​	content://<Authority>/<tabla>
+  ```xml
+  content://<Authority>/<tabla>
+  ```
+
+  
 
   si se quiere recuperar un valor específico, agregamos al final su id:
 
-  ​	content://<Authority>/<tabla>/<id>
+  ```xml
+  content://<Authority>/<tabla>/<id>
+  ```
+
+  ​	
 
 * Authority: Es una cadena de texto que identifica al proveedor de contenido dentro de tu aplicación. Generalmente se ocupa la siguiente nomenclatura: 
 
-  ​	<dominio de primer nivel>.<dominio>.<nombre-paquete>.<provider>
+* ```xml
+<dominio de primer nivel>.<dominio>.<nombre-paquete>.<provider>
+  ```
 
   Por ejemplo:
 

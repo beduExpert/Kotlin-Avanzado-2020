@@ -117,9 +117,11 @@ class FirebaseMessaging: FirebaseMessagingService() {
 8. Dar click en *Enviar mensaje de prueba*
 
 9. Ingresar el token copiado en la ventana, agregarlo y pulsar Test. **Nota: Importante cerrar la app o minimizarla**
-   <img src="img/09.png" width="40%"/>
+  
+  <img src="img/09.png" width="40%"/>
 
 10. Recibirán una notificación como esta: 
+
     <img src="img/10.png" width="40%"/>
 
 

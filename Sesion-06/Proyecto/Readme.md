@@ -23,12 +23,13 @@ Las notificaciones son un medio muy importante para la comunicación entre el us
 
 Vamos a implementar un sistema pequeño de notificaciones a nuestra app.
 
-
+Agregaremos también el servicio de Crashlytics, para informarnos sobre cualquier error en nuestra aplicación.
 
 #### Lineamientos
 
 * Al menos deben ocurrir tres notificaciones en situaciones distintas y con ligeras distinciones de personalización.
 * Las notificaciones deben ser coherentes con la lógica de negocio.
+* Se debe implementar Crashlytics. Se deben considerar datos extras en el log de los reportes.
 * La implementación de firebase es obligatoria, aunque no existan servicios remotos que le den una utilidad específica a las push notifications.
 
 [`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      

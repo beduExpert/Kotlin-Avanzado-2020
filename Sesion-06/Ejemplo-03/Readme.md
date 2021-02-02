@@ -15,10 +15,15 @@
 
 1. Haber cursado los temas previos sobre notificaciones
 2. Leer todo lo relacionado a FCM en el prework
+3. Un dispositivo (emulador o físico) con Google Play Services
 
 ### 3. Desarrollo :computer:
 
 Vamos a instalar la SDK de FCM Para android, y después la utilizaremos. Para ello, hay que configurar la aplicación en nuestro proyecto de Firebase (creado previamente en la [Sesión 5](../../Sesión-05) ), en el [Ejemplo 1](../../Sesion-05/Ejemplo-01) para ser exactos.
+
+
+
+**IMPORTANTE**: Debido a que FCM hace uso del SDK de Play Services, Se requiere una imagen de Android que tenga una versión compatible de Google Play Services.
 
 a) En la pantalla de inicio del proyecto, click la opción *Añadir aplicación* y al ícono de android
 
@@ -48,7 +53,7 @@ d) Instalar las dependencias, tal cual se muestra en las instrucciones y sincron
 implementation 'com.google.firebase:firebase-messaging:20.0.0'
 ```
 
-2. Creamos un clase que extienda de FirebaseMessagingService e Incluimos el servicio de FCM como service en el Manifiesto de nuestra aplicación, esto nos servirá posteriormente para nuestro [Reto 3](../Reto-03)
+2. Creamos un clase que extienda de FirebaseMessagingService e Incluimos el servicio de FCM como service en el Manifiesto de nuestra aplicación.
 
 ```kotlin
 class FirebaseMessaging: FirebaseMessagingService() {
@@ -122,9 +127,78 @@ class FirebaseMessaging: FirebaseMessagingService() {
 10. Recibirán una notificación como esta: 
     <img src="img/10.png" width="40%"/>
 
+#### Declarando el canal de notificación
+
+Vamos a declarar el canal de notificación a utilizar, En el *MainActivity*.
+
+```kotlin
+companion object{
+        const val CHANNEL_ID = "CANAL_GENERICO"
+    }
+
+...
+
+override fun onCreate(savedInstanceState: Bundle?) {
+...
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            setNotificationChannel()
+        }
+...
+}
+
+...
+private fun setNotificationChannel(){
+        val channel = NotificationChannel(
+            CHANNEL_ID,
+            "Canal Generico",
+            NotificationManager.IMPORTANCE_DEFAULT
+        ).apply {
+            description = "CANAL GENERICO"
+        }
+
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        notificationManager.createNotificationChannel(channel)
+    }
+```
 
 
 
+#### Aplicación en primer plano
+
+Ahora vamos a correr la aplicación, mantenerla en primer plano y enviar otro mensaje de prueba por medio de la consola ¿Qué sucedió? No se recibe ningún mensaje porque se necesita habilitar un servicio que gestione la notificación en primer plano (la clase vacía que creamos previamente y que la declaramos como servicio en el Manifiesto).
+
+En nuestra clase *FirebaseMessaging*, haremos un *override* del método onMessageReceived para gestionar el mensaje arrivante. Los parámetros de la notificación (como título y cuerpo) los obtenemos de nuestro objeto ___remoteMessage___:
+
+```kotlin
+override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        if (remoteMessage.notification != null) {
+            sendNotification(remoteMessage.notification?.title, remoteMessage.notification?.body)
+        }
+    }
+```
+
+En el método anterior, mandamos a llamar al método ___sendNotification()___, cuyo propósito es detonar nuestra notificación a través de nuestro ___NotificationManager___. Por lo cual la declaramos de la siguiente forma:
+
+```kotlin
+    private fun sendNotification(title: String?, body: String?){
+        Log.d("FCM_MESSAGE", "Cuerpo de la notificación: $body")
+
+        val notificationBuilder = NotificationCompat.Builder(this,MainActivity.CHANNEL_ID)
+            .setSmallIcon(R.drawable.bedu_icon)
+            .setContentTitle(title)
+            .setContentText(body)
+
+
+        //lanzamos la notificación
+        with(NotificationManagerCompat.from(this)) {
+            notify(0, notificationBuilder.build()) //en este caso pusimos un id genérico
+        }
+    }
+```
+
+Esta función nos permite mostrar una notificación personalizada con el título y el cuerpo de nuestra notificación. Sin embargo, podemos personalizar nuestra notificación de acuerdo a la función a cumplir (botones personalizados, poder enviar un mensaje, rechazar una llamada, etc.).
 
 [`Anterior`](../Reto-02) | [`Siguiente`](../Ejemplo-04)      
 

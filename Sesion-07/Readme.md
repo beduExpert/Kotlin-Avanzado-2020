@@ -38,7 +38,6 @@ Implementaremos el patrón observer a través de una librería de terceros llama
 
 - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
 
-- `**](Reto-01/Readme.md)
 
 ---
 

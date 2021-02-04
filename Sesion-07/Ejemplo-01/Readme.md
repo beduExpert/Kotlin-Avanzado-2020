@@ -17,6 +17,10 @@
 
 ### 3. Desarrollo :computer:
 
+Vamos a aprender implementar lo esencial del patrón MVP en un proyecto previamente creado.
+
+Para esto, utilizaremos el [Proyecto base](base) en esta carpeta e iremos implementando las modificaciones.
+
 1. Vamos a utilizar a AddContactActivity para hacer nuestra migración, para eso creamos un nuevo package llamado *addcontact* en donde se encuentra nuestro *MainActivity*.
 
 2. Ahí colocaremos nuestros archivos *AddContactActivity* (nuestro View) y la clase *Contact* (nuestro Model) y creamos una tercera clase llamado *AddContactPresenter*
@@ -119,7 +123,7 @@ class AddContactActivity : AppCompatActivity(),AddContactPresenter.View {
 }
 ```
 
-5. Corremos la app, debe jalar como en el [Reto 3](../../Sesion-02/Reto-03)
+5. Corremos la app, el funcionamiento no debió ser alterado.
 
 [`Anterior`](../) | [`Siguiente`](../Reto-01)      
 

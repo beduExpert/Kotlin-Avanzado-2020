@@ -21,8 +21,8 @@ Crearemos un proyecto que implemente estos patrones. Quizá existea una cierta c
 
 ### Lineamientos
 
-1. Es deseable implementar Inyección de de dependencias mediante Dagger.
-2. Se debe implementar el Architecture Component sugerido por androi.
+2. Se debe implementar el Architecture Components sugerido por android.
+2. El ViewModel debe consumir recursos al menos de algún repositorio local (Una base de datos).
 
 [`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
 

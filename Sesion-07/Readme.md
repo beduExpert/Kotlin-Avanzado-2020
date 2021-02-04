@@ -30,27 +30,23 @@ Estructuraremos nuestro código con este patrón.
 
 ---
 
-
-
-<ins>Inyección de dependencias</ins>
-
-Sustituiremos con dagger la inyección manual de dependencias.
-
-- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-- [**`RETO 2`**](Reto-02/Readme.md)
-
----
-
  
 
 <ins>RxKotlin</ins>
 
 Implementaremos el patrón observer a través de una librería de terceros llamada ReactiveX, en la versiǿn para kotlin. Esta difiere un poco a la implementación viste con LiveData.
 
-- [**`EJEMPLO 3`**](Ejemplo-02/Readme.md)
-- [**`RETO 3`**](Reto-02/Readme.md)
+- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
 
+- `**](Reto-01/Readme.md)
 
+---
+
+ <ins>Architecture Components</ins>
+
+Utilizaremos el patrón de arquitectura propuesto por Jetpack para estructurar nuestro proyecto. 
+
+- [**`EJEMPLO 3`**](Ejemplo-03)
 
 ### 3. Proyecto :hammer:
 

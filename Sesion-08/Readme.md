@@ -5,6 +5,7 @@
 <img src="images/testing.png" align="right" height="120" hspace="10">
 
 <div style="text-align: justify;">
+ 
 ### 1. Objetivos :dart: 
 
 - Automatizar el testing de una aplicación

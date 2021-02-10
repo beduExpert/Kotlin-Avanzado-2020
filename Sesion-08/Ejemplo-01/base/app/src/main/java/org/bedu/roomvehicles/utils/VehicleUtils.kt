@@ -13,11 +13,8 @@ internal fun getNumberOfVehicles(vehicles: List<Vehicle>?): Int{
 
 internal fun activeVehiclesPercentage(vehicles: List<Vehicle>?): Float{
 
-    if(vehicles == null || vehicles.isEmpty()){
-        return 0f
-    }
 
-    val activeVehicles = vehicles.count{it.isWorking}
+    val activeVehicles = vehicles!!.count{it.isWorking}
     val totalVehicles = vehicles?.size
     return ( (totalVehicles- activeVehicles)/totalVehicles.toFloat() ) * 100f
 }

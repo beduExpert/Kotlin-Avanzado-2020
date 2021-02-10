@@ -1,4 +1,4 @@
-[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Reto 1`
+[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 08`](../Readme.md) > `Reto 1`
 
 ## Reto 1: Pruebas unitarias
 

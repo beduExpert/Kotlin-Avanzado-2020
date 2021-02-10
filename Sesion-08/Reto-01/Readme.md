@@ -71,7 +71,7 @@ fun activeVehiclesPercentage_two_returnsFifty(){
 ```
 
 
-  <details>
+  </details>
 
 
 

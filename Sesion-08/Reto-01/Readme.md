@@ -79,6 +79,7 @@ b) Corregir el error encontrado en el Test Unitario.
 
 <details>
 	<summary>Solucion</summary>
+	
 ```kotlin
 internal fun activeVehiclesPercentage(vehicles: List<Vehicle>?): Float{
 

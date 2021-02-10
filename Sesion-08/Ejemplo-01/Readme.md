@@ -1,4 +1,4 @@
-[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo `
+[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 08`](../Readme.md) > `Ejemplo 1`
 
 ## Ejemplo 1: Pruebas unitarias
 

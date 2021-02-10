@@ -102,8 +102,8 @@ companion object CREATOR : Parcelable.Creator<Contact> {
 
 <details>
 	<summary>Solucion</summary>
-
 *MainPresenter.kt*
+
 ```kotlin
 class MainPresenter constructor(view:View) {
 

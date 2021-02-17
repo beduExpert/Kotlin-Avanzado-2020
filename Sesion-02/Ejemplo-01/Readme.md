@@ -91,7 +91,7 @@ y esta String en **strings.xml**:
 6. Declaramos la url base como variable de nuestra clase: 
 
 ```kotlin
-private val baseUrl = "https://swapi.co/api/planets"
+private val baseUrl = "https://www.swapi.tech/api/planets"
 ```
 
 y en *onCreate()*, setearemos el listener de nuestro botón asíncrono:
@@ -144,7 +144,7 @@ fun llamadaAsincrona(){
 ```kotlin
  val json = JSONObject(body)
 val phrase = getString(R.string.choosen_planet)
-val planet = json.getString("name")
+val planet = json.getJSONObject("result").getJSONObject("properties").getString("name")
 
 Log.d("Response: ", "name: $planet")
 
@@ -203,7 +203,7 @@ Y corremos la aplicación. Veremos algo similar a esto:
 
             val json = JSONObject(body)
             val phrase = getString(R.string.choosen_planet)
-            val planet = json.getString("name")
+            val planet = json.getJSONObject("result").getJSONObject("properties").getString("name")
             runOnUiThread{
                 textView.text ="$phrase $planet"
             }

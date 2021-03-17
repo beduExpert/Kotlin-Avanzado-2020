@@ -3,6 +3,7 @@
 ## Reto 1: Pruebas unitarias
 
 <div style="text-align: justify;">
+
 ### 1. Objetivos :dart:
 
 * Realizar pruebas de clases y métodos ailsaldos  en específico.
@@ -26,7 +27,7 @@ a) Crear las pruebas unitarias para los siguientes casos:
 <details>
 	<summary>Solucion</summary>
 
-```
+```kotlin
 @Test
 fun activeVehiclesPercentage_empty_returnsZero(){
     val vehicles = listOf<Vehicle>()
@@ -79,7 +80,7 @@ b) Corregir el error encontrado en el Test Unitario.
 
 <details>
 	<summary>Solucion</summary>
-	
+
 ```kotlin
 internal fun activeVehiclesPercentage(vehicles: List<Vehicle>?): Float{
 

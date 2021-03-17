@@ -1,4 +1,4 @@
-[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 0`](../Readme.md) > `Ejemplo `
+[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo `
 
 ## Postwork
 
@@ -20,7 +20,7 @@ Implementar un patrón de arquitectura es sumamente importante en un proyecto, d
 
 
 
-#### Android Jetpack Architecture
+#### Hamcrest
 
 Esta arquitectura propuesta por Jetpack, Está conformada por los siguientes componentes:
 

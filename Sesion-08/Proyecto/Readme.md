@@ -4,18 +4,14 @@
 
 <div style="text-align: justify;">
 
-
-
-
-
 ### 1. Objetivos :dart:
 
-* Implementar Content providers para intercomunicarse con otras apps.
-* Escuchar eventos del sistema y reaccionar a ellos.
+* Crear test unitarios a nuestras clases.
+* Hacer tests de acciones específicas en la UI de nuestra app.
 
 ### 2. Requisitos :clipboard:
 
-
+* Instalar las dependencias anteriormente remarcadas.
 
 ### 3. Desarrollo :computer:
 
@@ -23,12 +19,13 @@ En esta parte del proyecto, implementaremos una serie de tests para que nuestra 
 
 
 
-Lineamientos
+#### Lineamientos
 
-1. Al menos debe haber 12 pruebas Unitarias
-2. Debe de existir al menos 8 pruebas intermedias .
+1. Deben existir al menos 5 test unitarios que corran en la JVM, sin dependencia del framework de Android. Si no existe una clase que pueda ser testeada, crearla. 
+2. Deben existir al menos 2 tests que involucren el uso del framework de android en un test unitario local (no instrumentado).
+3. Debe de existir al menos 4 tests de integración instrumentados (funciones simples como interactuar con la UI y verificar que una acción esté funcionando correctamente).
 
-[`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
+[`Anterior`](../Ejemplo-03) | [`Siguiente`](../Postwork)      
 
 </div>
 

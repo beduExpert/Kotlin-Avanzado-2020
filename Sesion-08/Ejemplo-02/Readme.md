@@ -1,148 +1,274 @@
+
+
 [`Kotlin Avanzado`](../../Readme.md) > [`Sesión 08`](../Readme.md) > `Ejemplo 2`
 
-## Ejemplo 2: Pruebas de integración
+## Ejemplo 2: Local Tests con Dependencias Android
 
 <div style="text-align: justify;">
 
-
-
-
 ### 1. Objetivos :dart:
+
 
 * Realizar pruebas entre clases interactuando entre sí. 
 * Ejecutar pruebas en la interfaz gráfica de la app.
 
 ### 2. Requisitos :clipboard:
 
-
+* Instalar las dependencias enunciadas a continuación.
 
 ### 3. Desarrollo :computer:
 
-Puedes ejecutar pruebas de unidades instrumentadas en un dispositivo físico o en un emulador. Sin embargo, esta forma de prueba implica tiempos de ejecución mucho más lentos que los correspondientes a las pruebas de unidades locales, por lo que se recomienda confiar en este método solo cuando es esencial para evaluar el comportamiento de la app frente al hardware real del dispositivo.
-
-Al ejecutar pruebas instrumentadas, AndroidX Test utiliza los siguientes subprocesos:
-
-- El *subproceso principal*, también conocido como "subproceso de la IU" o "subproceso de la actividad", es el lugar donde se producen eventos de interacciones con la IU y el ciclo de vida de la actividad.
-- El *subproceso de instrumentación* es el lugar donde se ejecutan la mayoría de las pruebas. Cuando comienza el conjunto de pruebas, la clase `AndroidJUnitTest` inicia este subproceso.
 
 
+#### Setup inicial
 
-### Cómo escribir pruebas de nivel intermedio
+Reorganizamos nuestro _build.gradle_ y agregamos dependencias
 
-Además de probar cada unidad de tu app mediante la ejecución de pruebas de nivel inferior, debes validar el comportamiento de tu app desde nivel del módulo. Para ello, escribe pruebas de nivel intermedio, que son pruebas de integración que validan la colaboración y la interacción de un grupo de unidades.
+Estas son las dependencias para test unitario
 
-para definir la mejor manera de representar grupos de unidades en la app:
-
-1. Interacciones entre una vista y un modelo de vista, como probar un objeto [`Fragment`](https://developer.android.com/reference/androidx/fragment/app/Fragment), validar el XML del diseño o evaluar la lógica de vinculación de datos de un objeto [`ViewModel`](https://developer.android.com/reference/androidx/lifecycle/ViewModel)
-2. Pruebas en la capa de repositorio de tu app, que verifican que las diferentes fuentes de datos y los objetos de acceso a datos (DAO) interactúan de la forma esperada
-3. Porciones verticales de la app, que prueban las interacciones en una pantalla determinada. (esa prueba verifica las interacciones en todas las capas de la pila de tu app)
-4. Pruebas de varios fragmentos que evalúan un área específica de la app (a diferencia de los otros tipos de pruebas de nivel intermedio mencionados en la lista, este tipo de prueba en general requiere un dispositivo real porque la interacción durante las pruebas involucra varios elementos de la IU)
+```groovy
+// librerías de test unitario
+testImplementation 'junit:junit:4.+'
+testImplementation "com.google.truth:truth:1.1"
+testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1"
+testImplementation "androidx.arch.core:core-testing:2.0.0"
+```
 
 
 
-Para usar Espresso, agrega la siguiente dependencia al archivo de compilación de Gradle de su aplicación.
+#### Test Doubles
+
+Al probar ciertos módulos específicos de nuestro código, podemos tener problemas al encontrar dependencias con alguna clase que no planeamos verificar en un test específico debido a su complejidad o dependencia de algún servicio externo (como repositorios remotos); para eso nos apoyamos de un _Test Double_, que suplirá la función para que el test pueda ser ejecutado. Hay distintos tipos de _Test Doubles_ que sirven para distintos contextos, los dos principales son:
+
+* ***Fakes***: Versiones modificadas de la dependencia real para ser funcionales en un _Test_.
+* ___Mocks___: Clases que provocan que un test sea correcto o falle, dependiendo de cómo sean llamados sus métodos. No tienen una implementación que simule el comportamiento de la dependencia. Existen varios frameworks que facilitan la creación de estos.
+*  ___Stubs___: Estos dobles se encargan únicamente de regresar valores esperados en cada uno de sus métodos y por lo tanto, carecen de lógica.
+
+En este caso, vamos a crear un _Fake_ para nuestro repositorio de vehículos, por lo cual crearemos una interfaz que dictará la estructura del repositorio para la implementación real como el fake.
+
+Para volver ___VehicleRepository___ en interfaz, daremos click derecho al _nombre de la clase>Refactor>Extract Interface_
+
+<img src="images/ext-interface.png" width="80%">
+
+
+
+Nos aparecerá un menú para seleccionar el archivo destino. Seleccionaremos _Extract to separate file_
+
+<img src="images/extract-new-file.png" width="60%">
+
+Ahora tenemos una ventana para seleccionar nombre de la interfaz (en este caso la nombramos _Repository_), directorio, nombre del archivo y los métodos a agregar: seleccionamos todos y damos _Refactor_. 
+
+<img src="images/interface.png" width="90%">
+
+
+
+Ahora crearemos nuestro repositorio fake. Crearemos la clase ___FakeVehicleRepository___ en ___src>test>java...>data___ (si algunos de los packages para la ruta no existen, crearlos).
+
+la clase deberá implementar la interfaz ___Repository___, y aquí simularemos el almacenamiento a la base de datos local, mediante una lista inicialmente vacía a la que manipularemos a través de los métodos de nuestro repositorio.
+
+declaramos nuestra lista observable:
 
 ```kotlin
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+private var observableVehicles = MutableLiveData<List<Vehicle>>()
+```
 
-    testImplementation 'junit:junit:4.12'
 
-    // Android runner and rules support
-    androidtestImplementation 'com.android.support.test:runner:0.5'
-    androidtestImplementation 'com.android.support.test:rules:0.5'
 
-    // Espresso support
-    androidtestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+Para obtener nuestros vehículos, sobreescribimos ___getVehicles___, únicamente retornando nuestro observable:
 
-    // add this for intent mocking support
-    androidtestImplementation 'com.android.support.test.espresso:espresso-intents:2.2.2'
 
-    // add this for webview testing support
-    androidtestImplementation 'com.android.support.test.espresso:espresso-web:2.2.2'
+
+```kotlin
+override fun getVehicles(): LiveData<List<Vehicle>> {
+    return observableVehicles
+}
+```
+
+Para remover un vehículo, debemos recuperar la lista dentro del observable y asignarlo a una lista mutable para poder eliminar el vehículo dado y reasignarlo al observable.
+
+```kotlin
+override suspend fun removeVehicle(vehicle: Vehicle) {
+        val newList: MutableList<Vehicle> = observableVehicles.value?.toMutableList() ?: mutableListOf()
+        newList.remove(vehicle)
+        observableVehicles.value = newList
+    }
+```
+
+De forma similar, sobreescribimos ___addVehicle___ para poder agregar un nuevo elemento al observable.
+
+```kotlin
+    override suspend fun addVehicle(vehicle: Vehicle) {
+        val newList: MutableList<Vehicle> = observableVehicles.value?.toMutableList() ?: mutableListOf()
+        newList.add(vehicle)
+        observableVehicles.value = newList
+    }
+```
+
+Para ___populateVehicles___, basta con asignar la lista al valor del observable.
+
+```kotlin
+override fun populateVehicles(vehicles: List<Vehicle>) {
+    observableVehicles.value = vehicles
+}
+```
+
+#### Local Test de un ViewModel
+
+Con nuestro repositorio fake, podremos ahora probar nuestro ___VehicleListViewModel___, cuya única dependencia es nuestro repositorio. Haremos un par de modificaciones:
+
+Este es el constructor actual de nuestro _viewModel_:
+
+```kotlin
+class VehicleListViewModel(private val vehicleRepository: VehicleRepository): ViewModel() 
+```
+
+ Para poder pasar como argumento nuestro repositorio fake, cambiaremos el tipo a ___Repository___:
+
+```kotlin
+class VehicleListViewModel(private val vehicleRepository: Repository): ViewModel() 
+```
+
+debido a que el método prepopulate asume que tenemos un método populateVehicles que no está en nuestra interfaz, lo eliminaremos.
+
+```kotlin
+// Eliminar este método
+fun prepopulate(){
+
+    val vehicles = listOf(
+        Vehicle(model = "Vento",brand = "Volkswagen",platesNumber = "STF0321",isWorking = true),
+        Vehicle(model = "Jetta",brand = "Volkswagen",platesNumber = "FBN6745",isWorking = true)
+    )
+    vehicleRepository.populateVehicles(vehicles)
 
 }
 ```
 
-Al crear nuestro Test, el código debe quedar la siguiente forma:
+
+
+Ahora crearemos un test para nuestro ViewModel (el test debe ir dentro de ___test___). Utilizaremos __AndroidJUnitRunner__ para poder ejectutar nuestras pruebas a través de un dispositivo android.
 
 ```kotlin
-package com.vogella.android.espressofirst;
-
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+class VehicleListViewModelTest{
 
 
-@RunWith(AndroidJUnit4.class)
-public class MainActivityEspressoTest {
-
-
-    @Rule
-    public ActivityTestRule<MainActivity> mActivityRule =
-        new ActivityTestRule<>(MainActivity.class);
-
-    @Test
-    public void ensureTextChangesWork() {
-        // Type text and then press the button.
-        onView(withId(R.id.inputField))
-                .perform(typeText("HELLO"), closeSoftKeyboard());
-        onView(withId(R.id.changeText)).perform(click());
-
-        // Check that the text was changed.
-        onView(withId(R.id.inputField)).check(matches(withText("Lalala")));
-    }
-
-    @Test
-    public void changeText_newActivity() {
-        // Type text and then press the button.
-        onView(withId(R.id.inputField)).perform(typeText("NewText"),
-                closeSoftKeyboard());
-        onView(withId(R.id.switchActivity)).perform(click());
-
-        // This view is in a different Activity, no need to tell Espresso.
-        onView(withId(R.id.resultView)).check(matches(withText("NewText")));
-    }
 }
 ```
 
 
 
-Las acciones a lanzarse en la interfaz gráfica se pueden resumir en estas funciones:
+Dentro de la clase, declaramos un atributo _vehicleRepository_ que será utilizado en los tests. También declaramos una instancia del viewModel que va ser sometido a testing
+
+```kotlin
+private lateinit var vehicleRepository: VehicleRepository
+private lateinit var viewModel: VehicleListViewModel
+```
+
+Crearemos tres modelos de vehículos dentro de nuestra clase para utilizarlos posteriormente.
+
+```kotlin
+private val vento = Vehicle(model = "Vento",brand = "Volkswagen",platesNumber = "STF0321",isWorking = true)
+private val jetta = Vehicle(model = "Jetta",brand = "Volkswagen",platesNumber = "FBN6745",isWorking = true)
+private val tsuru = Vehicle(model = "Tsuru",brand = "Nissan",platesNumber = "RFG4583",isWorking = true)
+```
+
+
+Mediante el _annotation_ ___Before___, determinaremos el método setup que se correrá al principio de cada test. En este caso, inicializamos nuestro repositorio, agregamos dos de los vehículos a una lista para pasarlo al repositorio y finalmente, inicializamos nuestro *viewModel*.
+
+```kotlin
+@Before
+    fun setup(){
+        vehicleRepository = FakeVehicleRepository()
+
+        val vehicles = listOf(vento,jetta)
+
+        vehicleRepository.populateVehicles(vehicles)
+        viewModel = VehicleListViewModel(vehicleRepository)
+    }
+```
+
+
+
+Ahora escribiremos nuestro primer test que verificará que al eliminar un coche, este ya no se encuentre disponible en el _viewModel_. Crearemos un observer que observará nuestra lista de vehículos, el método ___observeForever___ es utilizado a falta de un _viewLifeCycleOwner_ que pueda determinar cuando se observa nuestro _LiveData_. A continuación eliminamos un vehículo de nuestro _viewModel_, volvemos a obtener la lista de vehículos y verificamos que el vehículo eliminado ya no se encuentre en la lista. No hay qué olvidarse de remover el observer al final de la prueba para evitar un memory leak.
+
+```kotlin
+@Test
+fun removeVehicle_removesVehicle(){
+    val observer = Observer<List<Vehicle>>{}
+
+    try {
+
+        viewModel.vehicleList.observeForever(observer)
+
+        // When: Cuando probamos agregar un nuevo evento con nuestro ViewModel
+        viewModel.removeVehicle(jetta)
+
+        //Then: Entonces el evento fue disparado (eso provoca que no sea nulo y que tenga alguno de los estados:
+        //      loading, success, error)
+        val vehicles = viewModel.vehicleList.value
+
+        assertThat(vehicles).contains(jetta)
+
+    } finally {
+        viewModel.vehicleList.removeObserver(observer) // eliminamos el observer para evitar memory leaks
+    }
+    viewModel.removeVehicle(jetta)
+}
+```
+
+
+
+Si intentamos correr la prueba, obtendremos el siguiente error:
+
+> java.lang.RuntimeException: Method getMainLooper in android.os.Looper not mocked.
+
+
+
+Esto se debe a que el scheduler por defecto utiliza dependencias de Android no presentes en JUnit, por lo que podríamos utilizar el framework ___robolectric___ para suplir esto, pero para este caso, utilizaremos la siguiente regla:
 
 
 
 ```kotlin
-onView(withText(startsWith("ABC"))).perform(click()); 
-
-onView(withText(endsWith("YYZZ"))).perform(click()); 
-
-onView(withId(R.id.viewId)).check(matches(withContentDescription(containsString("YYZZ")))); 
-
-onView(withText(equalToIgnoringCase("xxYY"))).perform(click()); 
- -
-onView(withText(equalToIgnoringWhiteSpace("XX YY ZZ"))).perform(click()); 
-
-onView(withId(R.id.viewId)).check(matches(withText(not(containsString("YYZZ"))))); 
+@get:Rule
+var instantExecutorRule = InstantTaskExecutorRule()
 ```
 
-A través de InstrumentationRegistry.getTargetContext (), uno tiene acceso al contexto de destino de su aplicación. Por ejemplo, si se requiere usar el id sin usar R.id, se puede usar el siguiente método auxiliar para determinarlo.
 
-[`Anterior`](../) | [`Siguiente`](../)      
+
+Ahora al intentar correr el test, obtenemos el siguiente error:
+
+> Exception in thread "main" java.lang.IllegalStateException: Module with the Main dispatcher had failed to initialize. For tests Dispatchers.setMain from kotlinx-coroutines-test module can be used
+
+La razón por la cual sucede esto, es que se requiere un ___coroutine dispatcher___ para operar con las corrutinas de nuestro repositorio. Crearemos una regle que asigne un ___TestCoroutineDispatcher___ al principio de nuestro test y lo limpie al final.
+
+```kotlin
+@ExperimentalCoroutinesApi
+class CoroutineTestRule(val dispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()) : TestWatcher() {
+
+    override fun starting(description: Description?) {
+        super.starting(description)
+        Dispatchers.setMain(dispatcher)
+    }
+
+    override fun finished(description: Description?) {
+        super.finished(description)
+        Dispatchers.resetMain()
+        dispatcher.cleanupTestCoroutines()
+    }
+
+}
+```
+
+Esta regla debe ser declarada en nuestra clase de testing.
+
+```kotlin
+@get:Rule
+var coroutineTestRule = CoroutineTestRule()
+```
+
+
+
+Finalmente, ejecutamos nuestro test y verificamos que funcione correctamente.
+
+[`Anterior`](../Reto-01) | [`Siguiente`](../Ejemplo-03)      
 
 </div>
-

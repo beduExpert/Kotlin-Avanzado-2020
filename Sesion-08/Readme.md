@@ -5,7 +5,7 @@
 <img src="images/testing.png" align="right" height="120" hspace="10">
 
 <div style="text-align: justify;">
- 
+
 ### 1. Objetivos :dart: 
 
 - Automatizar el testing de una aplicación
@@ -28,9 +28,9 @@ TDD (Test-Driven Development) es una metodología de desarrollo donde se desarro
 
 Google divide los tipos de tests en tres categorías diferentes:
 
-* ___Small tests___: Son casos de pruebas que evalúan funcionalidades específicas y aisladas de nuestro código. Por ejemplo, una clase que evalue si una contraseña es válida será aislada de cualquier dependencia de la que se apoye y se probarán distintas contraseñas para comprobar que valide correctamente. Estos tests se pueden ejecutar en nuestra IDE como en un dispositivo físico o emulado. Estos tests son llamados _Unit Tests_ o pruebas unitarias. 
-* ___Medium tests___: Las pruebas unitarias verifican la función específica de una tarea, sin embargo, las tareas tienden a interactuar entre sí. En estos tests se ejecutan una serie de Unit Tests para evaluar su comportamiento en conjunto.
-* ___Large tests___: Estas pruebas emulan la interacción de un usuario con la interfaz, específicamente los flujos principales de nuestra aplicación para verificar que no exista ningún error en esta. estas son las más lentas de ejecutar, más complejas de desarrollar y requieren ser probadas en dispositivos con distintos tamaños de pantalla y hardware diferente.
+* ___Unit tests___ (small tests): Son casos de pruebas que evalúan funcionalidades específicas y aisladas de nuestro código. Por ejemplo, una clase que evalue si una contraseña es válida será aislada de cualquier dependencia de la que se apoye y se probarán distintas contraseñas para comprobar que valide correctamente. Estos tests se pueden ejecutar en nuestra IDE como en un dispositivo físico o emulado. Estos tests son llamados _Unit Tests_ o pruebas unitarias. 
+* ___Integration tests___ (medium tests): Las pruebas unitarias verifican la función específica de una tarea, sin embargo, las tareas tienden a interactuar entre sí. En estos tests se ejecutan una serie de Unit Tests para evaluar su comportamiento en conjunto.
+* ___End-to-End tests___ (UI tests o large tests): Estas pruebas emulan la interacción de un usuario con la interfaz, específicamente los flujos principales de nuestra aplicación para verificar que no exista ningún error en esta. estas son las más lentas de ejecutar, más complejas de desarrollar y requieren ser probadas en dispositivos con distintos tamaños de pantalla y hardware diferente.
 
 
 
@@ -44,18 +44,13 @@ Generaremos pruebas unitarias para una aplicación sencilla.
 
 - [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
 - [**`Reto 1`**](Reto-01/Readme.md)
+- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
 
 #### <ins>Integrated tests y Tests instrumentados</ins>
 
 Generaremos pruebas unitarias para una aplicación sencilla.
 
-- [**`EJEMPLO 2`**](Ejemplo-01/Readme.md)
-
-***<ins>Tests end-to-end***</ins>
-
-Generaremos pruebas completas de flujos  para una aplicación sencilla.
-
-- [**`EJEMPLO 3`**](Ejemplo-01/Readme.md)
+- [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
 
 
 

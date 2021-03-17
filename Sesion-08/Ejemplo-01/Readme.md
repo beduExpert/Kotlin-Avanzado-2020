@@ -9,11 +9,11 @@
 
 ### 1. Objetivos :dart:
 
-* Realizar pruebas de clases y métodos ailsaldos  en específico.
+* Realizar pruebas de clases y métodos aislados  en específico en la JVM.
 
 ### 2. Requisitos :clipboard:
 
-
+* JUnit y Thruth instalados.
 
 ### 3. Desarrollo :computer:
 

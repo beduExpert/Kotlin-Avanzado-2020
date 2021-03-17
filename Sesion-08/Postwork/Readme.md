@@ -4,14 +4,9 @@
 
 <div style="text-align: justify;">
 
-
-
-
-
 ### 1. Objetivos :dart:
 
-* Implementar Content providers para intercomunicarse con otras apps.
-* Escuchar eventos del sistema y reaccionar a ellos.
+* Crear tests de un proyecto android que se apeguen a la filosofía TDD.
 
 ### 2. Requisitos :clipboard:
 
@@ -19,16 +14,18 @@
 
 ### 3. Desarrollo :computer:
 
-En esta parte del proyecto, implementaremos una serie de tests para que nuestra aplicación pueda detectar errores de programación y corregirlos. Estos sobreviven a nuevas implementaciones y se irȧn agregando nuesvos al crear nuevos features para la computadora.
+El Test-Driven Development (TDD) es una estrategia utilizado en cualquier metodología agil de desarrollo, pues esta provee de un mecanismo de testeo continuo. Esto implica escribir tests automáticos para nuestro código, lo cual erae ciertas ventajas: 
 
+*  Advierte al desarrollador de funcionalidades rotas al implementar un nuevo feature al correr nuevamente el ciclo de código.
+* Garantiza un flujo con poca posibilidad de bugs no detectados (especialmente útil al presentar versiones preliminares de una app).
+* Ahorra tiempo, debido a que previene de estar desarrollando parches para errores no previstos.
 
+#### Tips
 
-Lineamientos
+* Escribe primero los tests antes que el código, esto asegurará que la calidad de la funcionalidad desarrollada sea alta y sabremos que el código está completo cuando pase el test.
+* Desarrolla primero los tests unitarios, después los de integración y finalmente los de end-to-end.
 
-1. Al menos debe haber 12 pruebas Unitarias
-2. Debe de existir al menos 8 pruebas intermedias .
-
-[`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
+[`Anterior`](../Proyecto) | [`Siguiente`](../..)      
 
 </div>
 

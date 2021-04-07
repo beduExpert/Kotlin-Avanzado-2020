@@ -31,6 +31,6 @@ En caso de no existir un elemento gráfico candidato a una animación, se consid
 
 
 
-[`Anterior`](../Ejemplo-03/Readme.md) | [`Siguiente`](../Postwork/Readme.md)
+[`Anterior`](../Reto-02) | [`Siguiente`](../Postwork/Readme.md)
 
 </div>

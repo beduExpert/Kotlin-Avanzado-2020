@@ -23,9 +23,9 @@ Desarrollar cualquiera o las dos tareas listadas a continuación, Al dar click e
 
 * Deberemos crear una transición similar a esta con la imagen del producto:
 
-<img src="../Ejemplo-03/Images/expandable-view.gif" width="30%">
+<img src="../Ejemplo-02/Images/shared-transition.gif" width="50%">
 
-* Animar la entrada y salida de nuevos elementos con este tipo de instrucción (tomar ejemplo del [Reto 3](../Reto-03) ):
+* Animar la entrada y salida de nuevos elementos con este tipo de instrucción (tomar ejemplo del [Ejemplo 2](../Ejemplo-02) ):
 
 ```kotlin
 window.enterTransition = Slide() 

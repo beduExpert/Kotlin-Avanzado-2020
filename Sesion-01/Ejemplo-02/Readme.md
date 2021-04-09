@@ -22,7 +22,7 @@
 
 El menú principal de esta aplicación consta de una serie de botones que nos llevarán a distintas _Activities_, en cada una de estas se tratará un ejercicio distinto acerca de *Transitions*. El código que usaremos será la carpeta llamada [base]().
 
-<img src="images/main-screen.png" width="80%">
+<img src="Images/main-screen.png" width="80%">
 
 
 
@@ -48,7 +48,7 @@ Abriremos ___TransitionActivity___, aquí animaremos nuestras dos escenas:
 
 
 
-<img src="images/scene-one.png" width="80%">
+<img src="Images/scene-one.png" width="80%">
 
 Que corresponde al siguiente código:
 
@@ -86,7 +86,7 @@ Que corresponde al siguiente código:
 
 y esta será nuestra segunda escena:
 
-<img src="images/scene-two.png" width="80%">
+<img src="Images/scene-two.png" width="80%">
 
 
 
@@ -175,7 +175,7 @@ Dentro del ***FrameLayout*** de ___activity_transition.xml___, debemos incluir p
 
 Ejecutamos el ejemplo y pulsamos al botón:
 
-<img src="images/default-tran.gif" width="60%">
+<img src="Images/default-tran.gif" width="60%">
 
 
 
@@ -205,7 +205,7 @@ TransitionManager.go(sceneTwo, transition)
 
 La animación ahora se ajusta a nuestras especificaciones:
 
-<img src="images/bounds-tran.gif" width="60%">
+<img src="Images/bounds-tran.gif" width="60%">
 
 
 
@@ -310,7 +310,7 @@ Corremos el proyecto y probamos nuestra transición. Podremos notar que la apari
 
 Con esto, al reproducir nuestra transición obtenemos lo siguiente:
 
-<img src="images/transition-set.gif" width="70%">
+<img src="Images/transition-set.gif" width="70%">
 
 
 
@@ -422,7 +422,7 @@ val editText = EditText(this).apply {
 
 Los resultados de las dos transiciones se visualizan así:
 
-<img src="images/no-scene.gif" width="75%">
+<img src="Images/no-scene.gif" width="75%">
 
 
 
@@ -432,7 +432,7 @@ Ahora animaremos una transición entre _Activities_. Este par de transiciones co
 
 Para este ejemplo modificaremos la clase ___ActivitiesTransitionActivity___. Definiremos un set de transiciones para la primera pantalla (un fade para los elementos en general, un slide a la izquierda para la imagen de bedu y otro slide hacia abajo para el botón de iniciar sesión). Nuestro archivo de recursos queda así:
 
-```kotlin
+```xml
 <transitionSet
     xmlns:android="http://schemas.android.com/apk/res/android">
     <fade/>
@@ -522,7 +522,7 @@ El resultado queda así:
 
 
 
-<img src="images/activities-transition.gif" width="75%">
+<img src="Images/activities-transition.gif" width="75%">
 
 
 
@@ -547,7 +547,7 @@ Ahora continuamos con la transición compartida. Previamente, podemos observar u
 
 El layout de este, se ve de la siguiente forma:
 
-<img src="images/shared-1.png" width="70%">
+<img src="Images/shared-1.png" width="70%">
 
 
 
@@ -567,7 +567,7 @@ Mientras que en el layout ___activity_shared_transitioned___ podemos ver otro __
 </LinearLayout>
 ```
 
-<img src="images/shared-2.png" width="70%">
+<img src="Images/shared-2.png" width="70%">
 
 
 
@@ -598,7 +598,7 @@ val intent = Intent(this, SharedTransitionedActivity::class.java)
 
 Lo anterior nos conlleva a obtener la siguiente transición:
 
-<img src="images/shared-transition.gif" width="70%">
+<img src="Images/shared-transition.gif" width="70%">
 
 [`Anterior`](../Reto-01) | [`Siguiente`](../Reto-02)
 

@@ -19,7 +19,7 @@
 
 A partir del ejercicio de ___Shared Transition___ del [ejemplo 2](../Ejemplo-02/), crear la siguiente transición:
 
-<img src="images/exercise.gif" width="70%">
+<img src="Images/exercise.gif" width="70%">
 
 
 
@@ -38,24 +38,23 @@ Donde:
 
 <details>
 	<summary>Solucion</summary>
+
 ```kotlin
 binding.btnActivity2.setOnClickListener {
 
     val intent = Intent(this, SharedTransitionedActivity::class.java)
 
-
     val headerTransitionName = ViewCompat.getTransitionName(binding.imgConcert)?: " "
     val titleTransitionName = ViewCompat.getTransitionName(binding.titleConcert)?: " "
 
+val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+    this,
+    Pair.create(binding.imgConcert,headerTransitionName),
+    Pair.create(binding.titleConcert,titleTransitionName),
 
-    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-        this,
-        Pair.create(binding.imgConcert,headerTransitionName),
-        Pair.create(binding.titleConcert,titleTransitionName),
+)
 
-    )
-
-    startActivity(intent, options?.toBundle())
+startActivity(intent, options?.toBundle())
 }
 ```
 
@@ -70,4 +69,3 @@ binding.btnActivity2.setOnClickListener {
 [`Anterior`](../Reto-02/Readme.md) | [`Siguiente`](../Proyecto/Readme.md)
 
 </div>
-

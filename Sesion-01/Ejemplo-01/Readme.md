@@ -1,8 +1,8 @@
 
 
-[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 01`](../Readme.md) > `Ejemplo 3`
+[`Kotlin Avanzado`](../../Readme.md) > [`Sesión 01`](../Readme.md) > `Ejemplo 1`
 
-## Ejemplo 3: Animators
+## Ejemplo 1: Animators
 
 <div style="text-align: justify;">
 

@@ -16,34 +16,26 @@
 
  
 
-#### <ins>Multimedia</ins>
+#### <ins>Animators</ins>
 
-Mediante reproducción media de audio , se crean indicadores audiovisuales para comprender intuitivamente el propósito de nuestras funcionalidades.
+Mediante el uso de la clase ___Animator___ y quienes heredan de esta, realizaremos varias animaciones a nuestros views con respecto a movimiento, dimensiones, rotación y transparencia.
 
-- [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
+[**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
+
 - [**`RETO 1`**](Reto-01/Readme.md)
 
----
-
-
-
-<ins>Reproducción de Video</ins>
-
-Por medio de materiales audiovisuales, reproduciremos animaciones que ayuden a entender las instrucciones de nuestra app.
-
-- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-- [**`RETO 2`**](Reto-02/Readme.md)
+  
 
 ---
 
  
 
-<ins>Animaciones y trancisiones</ins>
+#### <ins>Transitions</ins>
 
-Haremos uso de ObjectAnimators y Transitions para crear animaciones suaves en el flujo de navegación y entre nuestros Views.
+Haremos uso de Transitions para crear animaciones suaves en el flujo de navegación y entre nuestros Views.
 
-- [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
-- [**`RETO 3`**](Reto-03/Readme.md)
+- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
+- [**`RETO 2`**](Reto-02/Readme.md)
 
  
 

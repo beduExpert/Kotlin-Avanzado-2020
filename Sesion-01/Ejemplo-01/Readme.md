@@ -45,7 +45,7 @@ Las propiedades son:
 
 El siguiente ejemplo consiste en realizar una serie de animaciones a una nave de Star Fox. El layout _main_activity.xml_ tiene la siguiente configuración:
 
-<img src="images/layout.png" width="70%">
+<img src="Images/layout.png" width="70%">
 
 
 
@@ -63,7 +63,7 @@ La clase ___ValueAnimator___ es una extensión 100% utilizable de la calse ___An
 
 Vamos a animar un barrel roll (giro) mediante ___rotation___.
 
-<img src="images/barrel-roll.gif" width="70%">
+<img src="Images/barrel-roll.gif" width="70%">
 
 
 
@@ -124,7 +124,7 @@ Una interpolación es el proceso de obtener puntos dentro de un rango de valores
 
 
 
-<img src="images/anim-curves.png" width="70%">
+<img src="Images/anim-curves.png" width="70%">
 
 ​							Ejemplos de curvas de animación con valores interpolados.
 

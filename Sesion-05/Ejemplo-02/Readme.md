@@ -48,15 +48,14 @@ Para los content providers, hay que entender los siguientes conceptos:
 * Authority: Es una cadena de texto que identifica al proveedor de contenido dentro de tu aplicación. Generalmente se ocupa la siguiente nomenclatura: 
 
 * ```xml
-<dominio de primer nivel>.<dominio>.<nombre-paquete>.<provider>
+  <dominio de primer nivel>.<dominio>.<nombre-paquete>.<provider>
   ```
 
   Por ejemplo:
 
   ​	org.bedu.roomvehicles.provider
 
-* 
-
+  
 
 
 

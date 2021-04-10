@@ -138,7 +138,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 5. en MainActivity, definir la url de donde recuperaremos info, y setear los click listeners de cada botón (Jedi y Sith):
 
 ```kotlin
- private val url = "https://swapi.co/api/people/1"
+ private val url = "https://swapi.dev/api/people/1/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -210,7 +210,7 @@ y corremos con cualquier botón, qué información obtiene? Nada distinto a los 
 class InterceptCharacter : Interceptor{
 
     //la nueva url que va a sustituir a la anterior
-    private val NEW_URL = "https://swapi.co/api/people/4"
+    private val NEW_URL = "https://swapi.dev/api/people/4/"
 
     //override de la clase Interceptor
     override fun intercept(chain: Interceptor.Chain): Response {

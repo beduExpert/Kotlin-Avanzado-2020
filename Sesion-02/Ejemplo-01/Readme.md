@@ -25,7 +25,7 @@ OkHttp es un cliente http para aplicaciones android y Java. Goza de ser uno de l
 2. Para instalar la dependencia, agregamos esta línea en nuestro *build.gradle* dentro de la carpeta *app*
 
 ```kotlin
-implementation("com.squareup.okhttp3:okhttp:4.2.2")
+implementation("com.squareup.okhttp3:okhttp:4.9.0")
 ```
 
 3. Sincronizamos el proyecto con el botón *Sync project with gradle files* para aplicar los cambios e instalar la dependencia.
@@ -91,7 +91,7 @@ y esta String en **strings.xml**:
 6. Declaramos la url base como variable de nuestra clase: 
 
 ```kotlin
-private val baseUrl = "https://swapi.co/api/planets"
+private val baseUrl = "https://swapi.dev/api/planets/"
 ```
 
 y en *onCreate()*, setearemos el listener de nuestro botón asíncrono:
@@ -114,7 +114,7 @@ fun llamadaAsincrona(){
 
         //obteniendo la url completa
         val planetNumber = Random.nextInt(1,60) //son 60 planetas
-        val url = "$baseUrl/$planetNumber"
+        val url = "$baseUrl$planetNumber/"
 
         //El objeto Request contiene todos los parámetros de la petición (headers, url, body etc)
         val request = Request.Builder()
@@ -190,7 +190,7 @@ Y corremos la aplicación. Veremos algo similar a esto:
 
         //obteniendo la url completa
         val planetNumber = Random.nextInt(1,61) //son 61 planetas
-        val url = "$baseUrl/$planetNumber"
+        val url = "$baseUrl$planetNumber/"
 
         val request =  Request.Builder()
                 .url(url)

@@ -20,13 +20,13 @@ Para terminar con nuestro pokedex, debemos ser capaces de notificar al usuario c
 
   1. Instalar la siguiente dependencia
 
- ```kotlin
- implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+ ```groovy
+ implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
  ```
 
  2.- Vamos a agregar el cliente okHttp a nuestro build de retrofit, para eso hay que definir antes el cliente por medio de esta líneas de código:
 
- ```kotlin
+ ```groovy
  val client = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .connectTimeout(TIMEOUT_CALL_SECONDS, TimeUnit.SECONDS)

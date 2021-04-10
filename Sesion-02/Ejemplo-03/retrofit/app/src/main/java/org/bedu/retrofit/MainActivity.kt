@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
             call?.enqueue(object : Callback<Pokemon> {
                 override fun onFailure(call: Call<Pokemon>, t: Throwable) {
-                    Log.d("hola","no hubo nada para mi: ${t}")
+                    Log.e("error","Error: $t")
                 }
 
                 override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                         tvWeight.text = "peso: " + body?.weight.toString()
                         Picasso.get().load(body?.sprites?.photoUrl).into(pokemon);
                     } else{
-                        Log.d("hola","no hubo nada para mi")
+                        Log.e("Not200","Error not 200: $response")
                     }
                 }
 

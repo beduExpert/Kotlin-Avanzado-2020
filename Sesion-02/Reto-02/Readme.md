@@ -45,16 +45,16 @@ por lo tanto, necesitamos una clase data que tenga dicha estructura.
 * En el log tiene qué dar el siguiente resultado:
 
 ```bash
-JediList(jediList=[Jedi(name=Luke Skywalker, height=172, mass=77), Jedi(name=C-3PO, height=167, mass=75), Jedi(name=R2-D2, height=96, mass=32), Jedi(name=Darth Vader, height=202, mass=136), Jedi(name=Leia Organa, height=150, mass=49), Jedi(name=Owen Lars, height=178, mass=120), Jedi(name=Beru Whitesun lars, height=165, mass=75), Jedi(name=R5-D4, height=97, mass=32), Jedi(name=Biggs Darklighter, height=183, mass=84), Jedi(name=Obi-Wan Kenobi, height=182, mass=77
+JediList(jediList=[Jedi(name=Luke Skywalker, height=172, mass=77), Jedi(name=C-3PO, height=167, mass=75), Jedi(name=R2-D2, height=96, mass=32), Jedi(name=Darth Vader, height=202, mass=136), Jedi(name=Leia Organa, height=150, mass=49), Jedi(name=Owen Lars, height=178, mass=120), Jedi(name=Beru Whitesun lars, height=165, mass=75), Jedi(name=R5-D4, height=97, mass=32), Jedi(name=Biggs Darklighter, height=183, mass=84), Jedi(name=Obi-Wan Kenobi, height=182, mass=77)])
 ```
 
 **Recordar** que todo arreglo en un json puede ser representado con un ArrayList en Gson.
 
 <details>
+<summary>Solucion</summary>
 
 
-        <summary>Solucion</summary>
-        ```kotlin
+```kotlin
     package org.bedu.advancedokhttp
     
     import com.google.gson.annotations.SerializedName
@@ -69,7 +69,7 @@ JediList(jediList=[Jedi(name=Luke Skywalker, height=172, mass=77), Jedi(name=C-3
        @SerializedName("results") //el nombre real
         val jediList: ArrayList<Jedi>
     )
-    ```
+```
 
 </details>
 

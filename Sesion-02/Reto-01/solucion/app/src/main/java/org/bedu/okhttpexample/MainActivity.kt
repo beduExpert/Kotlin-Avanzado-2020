@@ -12,7 +12,7 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity(){
 
-    private val url = "https://swapi.co/api/planets"
+    private val url = "https://swapi.dev/api/planets/"
     private lateinit var adapter: PlanetAdapter
     var planetList = ArrayList<Planet>()
 

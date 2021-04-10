@@ -6,7 +6,7 @@ import okhttp3.Response
 class InterceptCharacter : Interceptor{
 
     //la nueva url que va a sustituir a la anterior
-    private val NEW_URL = "https://swapi.co/api/people/4"
+    private val NEW_URL = "https://swapi.dev/api/people/4/"
 
     //override de la clase Interceptor
     override fun intercept(chain: Interceptor.Chain): Response {

@@ -77,6 +77,8 @@ Para eso utilizaremos una API llamada PokeApi. Aquí queda el enlace de su sitio
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:hint="Ingrese pokemon"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +179,7 @@ data class sprites(
             call?.enqueue(object : Callback<Pokemon> {
             //imprimimos algo si no nos llegó respuesta
                 override fun onFailure(call: Call<Pokemon>, t: Throwable) {
-                    Log.d("hola","no hubo nada para mi: ${t}")
+                    Log.e("error","Error: $t")
                 }
 
                        //mostramos los archivos solo si el resultado es 200 
@@ -191,7 +193,7 @@ data class sprites(
                         tvWeight.text = "peso: " + body?.weight.toString()
                         Picasso.get().load(body?.sprites?.photoUrl).into(pokemon); //esto es lobrd
                     } else{
-                        Log.d("hola","no hubo nada para mi")
+                        Log.e("Not200","Error not 200: $response")
                     }
                 }
 

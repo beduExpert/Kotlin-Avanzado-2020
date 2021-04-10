@@ -12,7 +12,7 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity(){
 
-    private val url = "https://swapi.co/api/people/1"
+    private val url = "https://swapi.dev/api/people/1/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

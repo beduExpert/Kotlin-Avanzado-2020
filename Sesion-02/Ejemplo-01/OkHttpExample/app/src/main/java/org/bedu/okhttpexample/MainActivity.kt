@@ -12,7 +12,7 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(){
 
-    private val baseUrl = "https://swapi.co/api/planets"
+    private val baseUrl = "https://swapi.dev/api/planets/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity(){
 
         //obteniendo la url completa
         val planetNumber = Random.nextInt(1,60) //son 60 planetas
-        val url = "$baseUrl/$planetNumber"
+        val url = "$baseUrl$planetNumber/"
+        Log.d("Response", url)
 
         //El objeto Request contiene todos los parámetros de la petición (headers, url, body etc)
         val request = Request.Builder()
@@ -49,16 +50,19 @@ class MainActivity : AppCompatActivity(){
 
             //el callback a ejecutar cuando hubo un error
             override fun onFailure(call: Call, e: IOException) {
-                Log.d("Error",e.toString())
+                Log.d("Response", e.toString())
+                Log.e("Error",e.toString())
             }
 
             //el callback a ejectutar cuando obtuvimos una respuesta
             override fun onResponse(call: Call, response: Response) {
+                Log.d("Response", response.toString())
                 val body = response.body?.string()
-                Log.d("Response: ", body)
+                Log.d("Response", body)
 
                 try {
                     val json = JSONObject(body)
+
                     val phrase = getString(R.string.choosen_planet)
                     val planet = json.getString("name")
 
@@ -81,7 +85,7 @@ class MainActivity : AppCompatActivity(){
 
         //obteniendo la url completa
         val planetNumber = Random.nextInt(1,61) //son 61 planetas
-        val url = "$baseUrl/$planetNumber"
+        val url = "$baseUrl$planetNumber/"
 
         val request =  Request.Builder()
                 .url(url)

@@ -13,7 +13,7 @@ import com.google.gson.reflect.TypeToken
 
 class MainActivity : AppCompatActivity(){
 
-    private val url = "https://swapi.co/api/people"
+    private val url = "https://swapi.dev/api/people/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(){
                 val body = response.body?.string()
                 try {
                     val newList = Gson().fromJson(body,JediList::class.java)
-                    println(newList.toString())
+                    Log.d("Response",newList.toString())
 
 
                 } catch (e: JSONException) {

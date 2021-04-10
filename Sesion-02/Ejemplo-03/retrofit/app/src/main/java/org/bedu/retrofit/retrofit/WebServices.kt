@@ -9,7 +9,7 @@ import retrofit2.http.*
 interface WebServices {
     // Request method and URL specified in the annotation
 
-    @GET("pokemon/{pokemon}/")
+    @GET("pokemon/{pokemon}")
     fun getPokemon(@Path("pokemon") pokemon: String): Call<Pokemon>
 
     @GET("type/{id}")

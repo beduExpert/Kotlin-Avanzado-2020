@@ -78,7 +78,7 @@ La aplicación debe verse así:
 * la url de la petición ahora es la base, para recuperar toda la lista
 
 ```kotlin
-private val url = "https://swapi.co/api/planets"
+private val url = "https://swapi.dev/api/planets/"
 ```
 abajo también declaramos nuestro adaptador y nuestro arreglo (el nombre lo sugerimos, pero puedes poner cualquier otro)
 

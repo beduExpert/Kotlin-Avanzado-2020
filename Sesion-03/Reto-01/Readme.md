@@ -1,3 +1,5 @@
+[
+
 [`Kotlin Avanzado`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Reto 1`
 
 ## Reto 1: Localización y GPS
@@ -17,13 +19,14 @@ Haber finalizado el [Ejemplo 1](../Ejemplo-01)
 
 ### 3. Desarrollo :computer:
 
-nvestigar para poder hacer las siguientes tareas:
+Investigar para poder hacer las siguientes tareas:
 
 1. Abrir el menú de prender localización cuando este no esté prendido
-
 2. Localizar automáticamente después de obtener el permiso de localización
 
+3. En caso de obtener una localización nula, avisar por medio de un _Toast_.
 
+___NOTA:___ Si después de desactivar y reactivar el servicio de Gps la localización no se puede recuperar, intenta abrir el servicio de google maps y vuelve a pedir el request.
 
 <details>
 	<summary>Solucion</summary>
@@ -61,6 +64,23 @@ override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<Str
             }
         }
     }
+```
+
+
+
+3. En ___addOnSuccessListener___, agregar lo siguiente:
+
+```kotlin
+if(location!=null){
+    tvLatitude.text = location?.latitude.toString()
+    tvLongitude.text = location?.longitude.toString()
+} else{
+    Toast.makeText(
+        this,
+        "Aún no se ha detectado una posición de localización",
+        Toast.LENGTH_SHORT)
+        .show()
+}
 ```
 
 </details>

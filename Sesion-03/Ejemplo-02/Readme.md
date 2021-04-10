@@ -265,7 +265,7 @@ Foto tomada
 
 <img src="images/03.jpeg" width="33%"/>
 
-Mostramos la ubicación de la foto con *ES Explorador de archivos*.
+Mostramos la ubicación de la foto con la app nativa ___File___  buscando en la ruta especificada en el _Toast___ (la imagen de abajo es la app *ES Explorador de archivos*).
 
 <img src="images/04.jpeg" width="33%"/>
 

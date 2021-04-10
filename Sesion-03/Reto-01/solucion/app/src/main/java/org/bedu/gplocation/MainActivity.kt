@@ -1,6 +1,7 @@
 package org.bedu.gplocation
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,6 +10,7 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -40,21 +42,30 @@ class MainActivity : AppCompatActivity() {
         //Esta condicionante implica que se respondió una petición de permisos GPS
         if (requestCode == PERMISSION_ID) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                Log.d("Location","Location after granted OK!")
                 getLocation()
             }
         }
     }
 
     //Si tenemos permisos y la ubicación está habilitada, obtener la última localización
+    @SuppressLint("MissingPermission")
     private fun getLocation() {
         if (checkPermissions()) { //verificamos si tenemos permisos
             if (isLocationEnabled()) { //localizamos sólo si el GPS está encendido
 
-                mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
-                    var location: Location? = task.result
+                mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
 
-                   tvLatitude.text = location?.latitude.toString()
-                    tvLongitude.text = location?.longitude.toString()
+                    if(location!=null){
+                        tvLatitude.text = location?.latitude.toString()
+                        tvLongitude.text = location?.longitude.toString()
+                    } else{
+                        Toast.makeText(
+                            this,
+                            "Aún no se ha detectado una posición de localización",
+                            Toast.LENGTH_SHORT)
+                            .show()
+                    }
 
                 }
             } else{

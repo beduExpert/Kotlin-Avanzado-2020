@@ -175,12 +175,12 @@ private fun isLocationEnabled(): Boolean {
 Mostramos la localización en formato latitud y longitud en los TextViews correspondientes
 
 ```kotlin
- private fun getLocation() {
+@SuppressLint("MissingPermission") 
+private fun getLocation() {
         if (checkPermissions()) { //verificamos si tenemos permisos
             if (isLocationEnabled()) { //localizamos sólo si el GPS está encendido
 
-                mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
-                    var location: Location? = task.result
+                mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
 
                    tvLatitude.text = location?.latitude.toString()
                     tvLongitude.text = location?.longitude.toString()

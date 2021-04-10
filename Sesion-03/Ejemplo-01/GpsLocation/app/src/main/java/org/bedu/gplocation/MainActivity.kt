@@ -1,6 +1,7 @@
 package org.bedu.gplocation
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -34,12 +35,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Si tenemos permisos y la ubicación está habilitada, obtener la última localización
+    @SuppressLint("MissingPermission") // no detecta bien que estamos requiriendo permisos
     private fun getLocation() {
         if (checkPermissions()) { //verificamos si tenemos permisos
             if (isLocationEnabled()) { //localizamos sólo si el GPS está encendido
 
-                mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
-                    var location: Location? = task.result
+                mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
 
                    tvLatitude.text = location?.latitude.toString()
                     tvLongitude.text = location?.longitude.toString()
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkPermissions(): Boolean {
         if ( checkGranted(Manifest.permission.ACCESS_COARSE_LOCATION) &&
-            checkGranted(Manifest.permission.ACCESS_COARSE_LOCATION) ){
+            checkGranted(Manifest.permission.ACCESS_FINE_LOCATION) ){
             return true
         }
         return false

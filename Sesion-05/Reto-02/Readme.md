@@ -21,6 +21,8 @@ El ejercicio en este reto consta de Implementar el método para actualizar un ve
 
 Este debe ser similar a la implementación vista en el [Reto 2](../../Sesion-04/Reto-02) de la [Sesión 4](Sesion-04).
 
+***Tip:*** Para la navegación a _AddEditFragment_, se puede pasar el vehículo a editar como argumento, esto requerirá la transformación del vehículo a ___Parcelable___. 
+
 
 
 [`Anterior`](../Ejemplo-02) | [`Siguiente`](../Proyecto)      

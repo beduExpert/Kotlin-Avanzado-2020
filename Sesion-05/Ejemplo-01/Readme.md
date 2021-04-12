@@ -54,7 +54,7 @@ Para esto, creamos un botón para detonar la emisión.
 
 Ahora, definiremos nuestro receiver; para esto, crearemos una subclase de ___BroadcastReceiver___ que implemente el método ___onReceive()___, dicho método se detona después de recibir una señal correspondiente y aquí es donde reaccionaremos a dicho evento. En nuestro ejemplo, obtendremos del evento los parámetros ___NAME___ y ___EMAIL___ mediante un bundle, como si de una comunicación entre activities se tratase. La información será mostrada en nuestro siempre confiable _Toast_.
 
-```
+```kotlin
 class ReceiverOne : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {

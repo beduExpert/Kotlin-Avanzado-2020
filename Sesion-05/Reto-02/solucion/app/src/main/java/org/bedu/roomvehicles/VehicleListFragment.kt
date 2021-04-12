@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.Nullable
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
@@ -39,8 +40,6 @@ class VehicleListFragment : Fragment(), ItemListener {
 
     private val loaderCallbacks: LoaderManager.LoaderCallbacks<Cursor> = object : LoaderManager.LoaderCallbacks<Cursor> {
         override fun onCreateLoader(id: Int, @Nullable args: Bundle?): Loader<Cursor?> {
-            Log.d("Vehicles","holamei")
-            Log.d("Vehicles","${VehicleProvider.URI_VEHICLE}")
             return CursorLoader(requireContext().applicationContext,
                     Uri.parse("${VehicleProvider.URI_VEHICLE}"),
                     arrayOf(
@@ -57,8 +56,6 @@ class VehicleListFragment : Fragment(), ItemListener {
         }
 
         override fun onLoadFinished(loader: Loader<Cursor?>, data: Cursor?) {
-
-            Log.d("Vehicles","termina, ${data?.count}")
 
             data?.apply {
                 // Determine the column index of the column named "word"
@@ -151,8 +148,10 @@ class VehicleListFragment : Fragment(), ItemListener {
     }
 
     override fun onEdit(vehicle: Vehicle) {
-
-
+        findNavController().navigate(
+                R.id.action_vehicleListFragment_to_addEditFragment,
+                bundleOf("edit_vehicle" to vehicle)
+        )
     }
 
     override fun onDelete(vehicle: Vehicle) {

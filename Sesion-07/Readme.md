@@ -32,7 +32,7 @@ Estructuraremos nuestro código con este patrón.
 
  
 
-<ins>RxKotlin</ins>
+#### <ins>RxKotlin</ins>
 
 Implementaremos el patrón observer a través de una librería de terceros llamada ReactiveX, en la versiǿn para kotlin. Esta difiere un poco a la implementación viste con LiveData.
 
@@ -41,7 +41,7 @@ Implementaremos el patrón observer a través de una librería de terceros llama
 
 ---
 
- <ins>Architecture Components</ins>
+####  <ins>Architecture Components</ins>
 
 Utilizaremos el patrón de arquitectura propuesto por Jetpack para estructurar nuestro proyecto. 
 

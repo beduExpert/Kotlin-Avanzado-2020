@@ -59,15 +59,12 @@ buildscripts {
     repositories {
         // ...
         google() //si no estaba, agregarlo
-        maven {
-           url 'https://maven.fabric.io/public' // repositorio de crashlytics
-        }
     }
 
     dependencies {
         // ...
-         classpath 'com.google.gms:google-services:4.3.3'  // plugin de Google Services
-         classpath 'io.fabric.tools:gradle:1.31.2' //el plugin de crashlytics
+         classpath 'com.google.gms:google-services:4.3.5'  // plugin de Google Services
+          classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2' //el plugin de crashlytics
     }
 }
 
@@ -83,25 +80,26 @@ allprojects {
 
 2. Abrir *app/build.gradle* y aplicar el plugin de fabric después del plugin *com.android.application*:
 
-```kotlin
-apply plugin: 'com.android.application'
-
-apply plugin: 'io.fabric'
-```
-
-3. En el mismo archivo, agregar la dependencia de crashlytics 
-
-```kotlin
-implementation 'com.google.firebase:firebase-analytics:17.2.1' // Opcional, pero la agregaremos
-```
-
-4. Agregar al fondo de *app/build.gradle* 
-
-```kotlin
-apply plugin: 'com.google.gms.google-services'
+```groovy
+plugins{
+	id 'com.android.application'
+	id 'com.google.gms.google-services'
+}
 ```
 
 
+
+3. Ahora, agregaremos la BoM de Firebase (Bill of Materials), que nos sirve para tener qué declarar nuestra versión de firebase únicamente en el mismo BoM.
+
+   ```groovy
+   implementation platform('com.google.firebase:firebase-bom:27.0.0')
+   ```
+
+4. En el mismo archivo, agregar la dependencia opcional de analytics
+
+```kotlin
+implementation 'com.google.firebase:firebase-analytics-ktx' // Opcional, pero la agregaremos
+```
 
  
 

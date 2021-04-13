@@ -25,10 +25,28 @@ Antes de instalar y aplicar Crashlytics, debemos configurar nuestro proyecto en 
 
 ![img](img/02.png)
 
-Implementamos la dependencia de crashlytics a nuestro proyecto
+
+
+Ahora, agregaremos el plugin de Gradle de Crashlytics en ___build.gradle___
+
+```groovy
+classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
+```
+
+
+
+En nuestro archivo ***app/build.gradle*** activaremos el plugin de crashlytics
+
+```groovy
+plugins{
+    id 'com.google.firebase.crashlytics'
+}
+```
+
+E implementamos nuestra dependencia de crashlytics.
 
 ```kotlin
-implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1' // Dependencia de crashlytics
+ implementation 'com.google.firebase:firebase-crashlytics-ktx' // Dependencia de crashlytics
 ```
 
 Sincronizamos nuestro proyecto y corremos.
@@ -57,7 +75,7 @@ Vamos a provocar nuestro primer error. En el arcchivo *activity_main.xml*, hay q
 
 ```kotlin
  btnError.setOnClickListener{
-            Crashlytics.getInstance().crash()
+            throw RuntimeException("Ejemplo de crash")
         }
 ```
 
@@ -85,12 +103,18 @@ Refrescaremos el panel de crashlytics en la consola, deberá salir un *Bloqueo* 
 
 ##### Crashlytics Log
 
+
+
+Primero, crearemos una instancia de ___FirebaseCrashlytics___ para poder ejecutar sus métodos.
+
+```kotlin
+val crashlytics = FirebaseCrashlytics.getInstance()
+```
+
 La pestaña de registros corresponde a logs que se imprimen desde la aplicación por medio del comando: 
 
 ```kotlin
-Crashlytics.log(priority: Int ,tag: String,msg:  String)//Hace un println (se muestra en el logcat) y registra el log en Crashlyticcs
-
-CrashLytics.log(ms: String)//De esta forma sólo se reporta el log
+CrashLytics.getInstance().log(ms: String)//De esta forma sólo se reporta el log
 ```
 
  el log de un crash report se envía en la siguiente vez que la aplicación se abra para evitar problemas de tráfico, por lo cual en los errores no críticos, hay que cerrar y volver a abrir nuestra app
@@ -103,8 +127,8 @@ Vamos a implementar estos métodos en nuestro botón de de error
             try {
                 throw NullPointerException()
             } catch (ex: NullPointerException) {
-                Crashlytics.log(Log.ERROR, "CrashError", "NullPointer Provocado para pruebas!")
-		Crashlytics.logException(ex) //para que se pueda reportar el non fatal exception
+                crashlytics.log(Log.ERROR, "CrashError", "NullPointer Provocado para pruebas!")
+		crashlytics.recordException(ex) //para que se pueda reportar el non fatal exception
             }
         }
 ```
@@ -131,19 +155,10 @@ Tanto en el logcat como en el registro aparece el error log que escribimos.
 
 Vamos a agregar datos extra, en este caso, simularemos algún identificador de usuario y otros datos que pueden ser útiiles para saber a quién le está sucediendo el error y bajo qué términos.
 
-vamos a agregar los siguientes datos:
-    -Correo electrónico
-    -UID
-    -Nombre de usuario
-
-
-
-con los siguientes métodos, llamados en el onCreate: 
+con el siguiente método, llamados en el onCreate: 
 
 ```kotlin
-Crashlytics.setUserIdentifier("Bedu-LmtvK4ge-Fqox-blRy")
-Crashlytics.setUserEmail("manuel@bedu.org")
-Crashlytics.setUserName("Manuel Bedu") 
+crashlytics.setUserIdentifier("Bedu-LmtvK4ge-Fqox-blRy")
 ```
 
 Esperamos un momento y consultamos el dashboard de Crashlytics, abrimos el último registro y abrimos la pesataña *datos*:
@@ -157,10 +172,21 @@ En el anterior error, al entrar a la pestaña de Claves, podemos observar que el
 Pondremos ahora valores clave a los errores, llamando a los siguientes métodos en el *onCreate*:
 
 ```kotlin
-Crashlytics.setInt("Edad", 23)
-Crashlytics.setString("Trabajo", "Developer")
-Crashlytics.setBool("Bloqueado",false)
-Crashlytics.setFloat("Crédito",1350.23f)
+crashlytics.setCustomKey("email","manuel@bedu.org")
+crashlytics.setCustomKey("name","Manuel Bedu")
+crashlytics.setCustomKey("Edad", 23)
+```
+
+
+
+También podemos agregar una serie de claves a través del método ___setCustomKeys___.
+
+```kotlin
+crashlytics.setCustomKeys {
+    key("Trabajo", "Developer")
+    key("Bloqueado",false)
+    key("Crédito",1350.23f)
+}
 ```
 
 corremos la aplicación y volvemos a generar el error. Consultamos el log y nos vamos a la pestaña *Claves*, debería salir un log similar al siguiente:

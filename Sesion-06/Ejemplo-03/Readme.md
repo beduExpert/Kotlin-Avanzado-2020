@@ -49,11 +49,11 @@ d) Instalar las dependencias, tal cual se muestra en las instrucciones y sincron
 
 1. Agregar la dependencia en gradle de FCM
 
-```kotlin
-implementation 'com.google.firebase:firebase-messaging:20.0.0'
+```groovy
+implementation 'com.google.firebase:firebase-messaging-ktx'
 ```
 
-2. Creamos un clase que extienda de FirebaseMessagingService e Incluimos el servicio de FCM como service en el Manifiesto de nuestra aplicación.
+2. Creamos un clase que extienda de FirebaseMessagingService e Incluimos el servicio de FCM como service en el Manifiesto de nuestra aplicación. Esto sirve para opciones más allá de recibir notificaciones en background (mensajes en foreground, entre otras opciones).
 
 ```kotlin
 class FirebaseMessaging: FirebaseMessagingService() {
@@ -85,21 +85,17 @@ class FirebaseMessaging: FirebaseMessagingService() {
 4. En el *onCreate* del *MainActivity*, obtener el token FCM de nuestro dispositivo cliente e imprimirlo en el log (para pruebas).
 
 ```kotlin
- FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("ERROR_FCM", "getInstanceId failed", task.exception)
-                    return@OnCompleteListener
-                }
+FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("Error", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
 
-                // Get new Instance ID token
-                val token = task.result?.token
+            val token = task.result
 
-                Log.d("FCM_TOKEN",token)
-
-                //toast
-                Toast.makeText(baseContext,"FCM token: $token", Toast.LENGTH_SHORT).show()
-            })
+            Log.d("FCM_TOKEN",token)
+            Toast.makeText(baseContext,"FCM token: $token", Toast.LENGTH_SHORT).show()
+        })
 ```
 
 
@@ -122,7 +118,7 @@ class FirebaseMessaging: FirebaseMessagingService() {
 8. Dar click en *Enviar mensaje de prueba*
 
 9. Ingresar el token copiado en la ventana, agregarlo y pulsar Test. **Nota: Importante cerrar la app o minimizarla**
-  
+
   <img src="img/09.png" width="40%"/>
 
 10. Recibirán una notificación como esta: 

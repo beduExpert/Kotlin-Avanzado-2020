@@ -96,13 +96,21 @@ Estaremos utilizando el proyecto del [Reto 1](../Reto-01) como base
 
 <img src="images/01.png" width="33%"/>
 
-2. Crearemos grupos de notificaciones, para esto, comenzaremos asignando un string como id en nuestro MainActivity 
+2. Agregamos la depencdenciar de ___FCM___ en ___app/build.gradle___.
+
+   
+
+   ```groovy
+   implementation 'com.google.firebase:firebase-messaging-ktx'
+   ```
+
+3. Crearemos grupos de notificaciones, para esto, comenzaremos asignando un string como id en nuestro ***MainActivity***.
 
 ```kotlin
 val GRUPO_SIMPLE = "GRUPO_SIMPLE"
 ```
 
-3. En *strings.xml*, agregamos nuevos títulos y cuerpos para las nuevas notificaciones del grupo
+3. En ***strings.xml***, agregamos nuevos títulos y cuerpos para las nuevas notificaciones del grupo.
 
 ```xml
 <string name="simple_title_2">Bedu</string>
@@ -112,7 +120,7 @@ val GRUPO_SIMPLE = "GRUPO_SIMPLE"
 <string name="simple_body_3">¡Y otra notificación extra!</string>
 ```
 
-4. Agregamos un nuevo método ****setGroup()*** con el id del grupo en nuestro builder de notificación simple 
+4. Agregamos un nuevo método ***setGroup()*** con el id del grupo en nuestro builder de notificación simple. 
 
 ```kotlin
     var builder = NotificationCompat.Builder(this, CHANNEL_OTHERS)
@@ -163,11 +171,11 @@ with(NotificationManagerCompat.from(this)) {
 
 El grupo colapsado debe verse así:
 
-<img src="/Users/dancu/Documents/bedu/C1-Kotlin-Avanzado/Sesion-06/Ejemplo-02/img/02.png" width="33%"/>
+<img src="images/02.png" width="33%"/>
 
 y Expandido:
 
-<img src="/Users/dancu/Documents/bedu/C1-Kotlin-Avanzado/Sesion-06/Ejemplo-02/img/03.png" width="33%"/>
+<img src="images/03.png" width="33%"/>
 
 7. Crearemos ahora una notificación expansible para cuando un texto es muy grande para el tamaño default de una notificación. Para ello asignamos el estilo del builder con **setStyle** y dentro del método declaramos el texto largo ccon *bigText(texto)*
 
@@ -194,13 +202,13 @@ y Expandido:
 Asignamos el método al botón correspondiente. 
 
 Esta es la notificación expandida
-<img src="/Users/dancu/Documents/bedu/C1-Kotlin-Avanzado/Sesion-06/Ejemplo-02/img/04.png" width="33%"/>
+<img src="images/04.png" width="33%"/>
 
 Esta es la notificación colapsada
-<img src="/Users/dancu/Documents/bedu/C1-Kotlin-Avanzado/Sesion-06/Ejemplo-02/img/05.png" width="33%"/>
+<img src="images/05.png" width="33%"/>
 
 
-8. Ahora crearemos una notificación con contenido definido por un Layout personalizado. Creamos un layout para el modo colapsado y otro para el expandido: 
+8. Ahora crearemos una notificación con contenido definido por un Layout personalizado. Creamos un layout para el modo colapsado (***notification_custom.xml***) y otro para el expandido(***notification_custom_expanded.xml***): 
 
 para colapsado: 
 
@@ -282,13 +290,13 @@ private fun customNotification(){
 y lo asignamos al listener de su botón
 
 La vista expandida se ve así:
-<img src="/Users/dancu/Documents/bedu/C1-Kotlin-Avanzado/Sesion-06/Ejemplo-02/img/06.png" width="33%"/>
+<img src="images/06.png" width="33%"/>
 
 y contraída: 
-<img src="/Users/dancu/Documents/bedu/C1-Kotlin-Avanzado/Sesion-06/Ejemplo-02/img/07.png" width="33%"/>
+<img src="images/07.png" width="33%"/>
 
 
-10. Por último, creamos la función para cancelar todas las notificaciones
+10. Por último, creamos la función para cancelar todas las notificaciones.
 
 ```kotlin
  private fun cancelNotifications(){

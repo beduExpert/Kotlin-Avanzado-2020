@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,21 +26,20 @@ class MainActivity : AppCompatActivity() {
             setNotificationChannel()
         }
 
-        FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("ERROR_FCM", "getInstanceId failed", task.exception)
-                    return@OnCompleteListener
-                }
 
-                // Get new Instance ID token
-                val token = task.result?.token
 
-                Log.d("FCM_TOKEN",token)
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("Error", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
 
-                //toast
-                Toast.makeText(baseContext,"FCM token: $token", Toast.LENGTH_SHORT).show()
-            })
+            val token = task.result
+
+            Log.d("FCM_TOKEN",token)
+            Toast.makeText(baseContext,"FCM token: $token", Toast.LENGTH_SHORT).show()
+        })
+
     }
 
     private fun setNotificationChannel(){

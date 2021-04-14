@@ -30,7 +30,9 @@ En resumen, un content provider tiene las siguientes aplicaciones:
 
   
 
+El siguiente diagrama muestra el flujo entre clases para la manipulación de datos de una app a través del content provider.
 
+<img src="images/provider-diagram.png" width="50%">
 
 #### Configuración inicial
 
@@ -225,6 +227,8 @@ El método ___getType___ servirá para identificar el tipo de dato que contiene 
     }
 ```
 
+ 
+
 Ahora implementamos el código para insertar un nuevo vehículo a través del método ___insert___. Identificaremos el tipo de dato en nuestra URI, en caso de ser un ___VEHICLE_DIR___, creamos un nuevo vehículo a partir del modelo, la marca y las placas; para insertarlo, utilizaremos nuestro Dao(), daremos aviso al content resolver del cambio efectuado y finalmente regresaremos en un Uri el id del nuevo vehículo. Si el vehículo es un ___VEHICLE_ITEM___, regresamos un error debido a que no podemos insertar un vehículo ya que el id lo crea automáticamente el motor.
 
 ```kotlin
@@ -294,7 +298,9 @@ Para actualizar los datos, lanzaremos una excepción si el tipo de dato es __VEH
     }
 ```
 
+Antes de continuar con la implementación del método query(), mostraremos la siguiente tabla que explica la equivalencia de cada uno de sus argumentos.
 
+<img src="images/query-table.png" width="80%">
 
 Finalmente, para el método ___query___, la consulta que efectuaremos sera _select_, por lo tanto implementamos lo siguiente:
 
